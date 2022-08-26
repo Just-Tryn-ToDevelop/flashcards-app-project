@@ -1,7 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { useParams, useHistory, Switch, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import NotEnoughCards from "./NotEnoughCards";
 
 function StudyCard({ deck, cards, index }) {
@@ -40,28 +38,26 @@ function StudyCard({ deck, cards, index }) {
   return (
     <Fragment>
       {showFront ? <h2>Study: {deck.name}</h2> : <h2>{deck.name}: Study</h2>}
-      <Card style={{ width: "100%" }}>
-        <Card.Body>
-          <Card.Title>
-            Card {cards.indexOf(card) + 1} of {cards.length}
-          </Card.Title>
-          <Card.Text>{showFront ? card.front : card.back}</Card.Text>
+      <div className="card" style={{ width: "100%" }}>
+        <div className="card-body">
+          <h5 className="card-title">Card {cards.indexOf(card) + 1} of {cards.length}</h5>
+          <p className="card-text">{showFront ? card.front : card.back}</p>
           {showFront ? (
-            <Button variant="secondary" type="button" onClick={flipHandler}>
+            <button className="btn btn-secondary" type="button" onClick={flipHandler}>
               Flip
-            </Button>
+            </button>
           ) : (
             <div>
-              <Button variant="secondary" type="button" onClick={flipHandler}>
-                Flip
-              </Button>{" "}
-              <Button variant="primary" type="button" onClick={nextHandler}>
+              <button className="btn btn-secondary" type="button" onClick={flipHandler}>
+              Flip
+            </button>{" "}
+              <button className="btn btn-primary" type="button" onClick={nextHandler}>
                 Next
-              </Button>
+              </button>
             </div>
           )}
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </Fragment>
   );
 }

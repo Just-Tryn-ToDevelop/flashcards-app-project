@@ -1,7 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
+import React, { useState, Fragment } from "react";
 import { createCard } from "../utils/api";
 import { Link } from "react-router-dom";
 
@@ -28,49 +25,66 @@ function AddCards({ deck }) {
     <Fragment>
       <main>
         <div>
-          <Breadcrumb>
-            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href={`/decks/${deck.id}`}>
-              {deck.name}
-            </Breadcrumb.Item>
-            <Breadcrumb.Item active>Add Card</Breadcrumb.Item>
-          </Breadcrumb>
-        </div>
-        <Form onSubmit={submitHandler}>
           <div>
-            <h2>{deck.name}: Add Card</h2>
+            <nav
+              ariaLabel="breadcrumb"
+              className="bg-light border d-flex justify-content-center pt-2"
+            >
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  {" "}
+                  <a href="/" style={{ textDecoration: "none" }}>
+                    Home
+                  </a>
+                </li>
+                <li className="breadcrumb-item">
+                  <a
+                    href={`/decks/${deck.id}/`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    {deck.name}
+                  </a>
+                </li>
+                <li className="breadcrumb-item active">Add Card</li>
+              </ol>
+            </nav>
           </div>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Front</Form.Label>
-            <Form.Control
-              as="textarea"
-              placeholder="Front side of card"
-              name="front"
-              value={formData.front}
-              onChange={changeHandler}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Back</Form.Label>
-            <Form.Control
-              as="textarea"
-              placeholder="Back side of card"
-              name="back"
-              value={formData.back}
-              onChange={changeHandler}
-            />
-          </Form.Group>
-          <Link to={`/decks/${deck.id}`}>
-            {" "}
-            <Button variant="secondary" type="button">
-              Done
-            </Button>{" "}
-          </Link>
-
-          <Button variant="primary" type="submit">
-            Save
-          </Button>
-        </Form>
+          <form onSubmit={submitHandler}>
+            <div>
+              <h2>{deck.name}: Add Card</h2>
+            </div>
+            <div className="mb-3" controlId="formBasicEmail">
+              <label className="form-label">Front</label>
+              <textarea
+                className="form-control"
+                name="front"
+                placeHolder="Front side of card"
+                value={formData.front}
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="mb-3" controlId="formBasicPassword">
+              <label className="form-label">Back</label>
+              <textarea
+                className="form-control"
+                name="back"
+                placeHolder="Back side of card"
+                value={formData.back}
+                onChange={changeHandler}
+              />
+            </div>
+            <Link to={`/decks/${deck.id}`} style={{ textDecoration: "none" }}>
+              <button className="btn btn-secondary" type="button">
+                Done
+              </button>{" "}
+            </Link>
+            <Link>
+              <button className="btn btn-primary" type="submit">
+                Save
+              </button>
+            </Link>
+          </form>
+        </div>
       </main>
     </Fragment>
   );

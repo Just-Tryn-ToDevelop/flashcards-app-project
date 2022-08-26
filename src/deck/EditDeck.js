@@ -1,7 +1,4 @@
 import React, { useEffect, useState, Fragment } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { updateDeck } from "../utils/api";
 import { Link } from "react-router-dom";
 
@@ -35,45 +32,50 @@ function EditDeck({ deck }) {
       <main style={{ margin: "30px" }}>
         <div>
           <div>
-            <Breadcrumb className="bg-light border d-flex justify-content-center pt-2 ">
-              <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-              <Breadcrumb.Item href={`/decks/${deck.id}/`}>
-                {deck.name}
-              </Breadcrumb.Item>
-              <Breadcrumb.Item active>Edit Deck</Breadcrumb.Item>
-            </Breadcrumb>
+            <nav ariaLabel="breadcrumb" className="bg-light border d-flex justify-content-center pt-2" >
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item" > <a href="/" style={{textDecoration: "none"}}>Home</a></li>
+              <li className="breadcrumb-item" >
+              <a href={`/decks/${deck.id}/`} style={{textDecoration: "none"}}>{deck.name}</a>
+              </li>
+              <li className="breadcrumb-item active" >Edit Deck</li>
+              </ol>
+            </nav>
           </div>
-          <Form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler}>
             <div>
               <h1>Edit Deck</h1>
             </div>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                as="input"
+            <div className="mb-3" controlId="formBasicEmail">
+              <label className="form-label">Name</label>
+              <input
+              className="form-control"
+                type="text"
                 name="name"
                 value={formData.name}
                 onChange={changeHandler}
               />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
+            </div>
+            <div className="mb-3" controlId="formBasicPassword">
+              <label className="form-label">Description</label>
+              <textarea
+                className="form-control"
                 name="description"
                 value={formData.description}
                 onChange={changeHandler}
               />
-            </Form.Group>
-            <Link to={`/decks/${deck.id}`}>
-              <Button variant="secondary" type="button">
+            </div>
+            <Link to={`/decks/${deck.id}`} style={{textDecoration: "none"}}>
+              <button className="btn btn-secondary" type="button">
                 Cancel
-              </Button>{" "}
+              </button>{" "}
             </Link>
-            <Button variant="primary" type="submit">
+            <Link>
+            <button className="btn btn-primary" type="submit">
               Submit
-            </Button>
-          </Form>
+            </button>
+            </Link>
+          </form>
         </div>
       </main>
     </Fragment>

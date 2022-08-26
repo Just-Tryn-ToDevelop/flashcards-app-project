@@ -1,6 +1,4 @@
 import React, { Fragment } from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import { deleteDeck } from "../utils/api";
 import { useHistory, Link } from "react-router-dom";
 
@@ -17,36 +15,27 @@ function Deck({ deck }) {
 
   return (
     <Fragment>
-      <div>
-        <Card style={{ width: "100%" }}>
-          <Card.Body>
-            <Card.Title>{deck.name}</Card.Title>
-            <Card.Subtitle
-              className="mb-2 text-muted"
-              style={{ textAlign: "right" }}
-            >
-              {deck.cards.length} cards
-            </Card.Subtitle>
-            <Card.Text>{deck.description}</Card.Text>
-            <Link to={`/decks/${deck.id}`}>
-              <Button variant="secondary" type="button">
-                View
-              </Button>{" "}
-            </Link>
-            <Link to={`/decks/${deck.id}/study`}>
-              <Button variant="primary" type="button">
-                Study
-              </Button>{" "}
-            </Link>
-            <Button
-              variant="danger"
-              className="float-right"
-              onClick={handleDelete}
-            >
-              Delete
-            </Button>{" "}
-          </Card.Body>
-        </Card>
+      <div className="card" style={{ width: "100%" }}>
+        <div className="card-body">
+          <h5 className="card-title">{deck.name}</h5>
+          <div className="mb-2 text-muted" style={{ textAlign: "right" }}>
+            {deck.cards.length} cards
+          </div>
+          <p className="card-text">{deck.description}</p>
+          <Link to={`/decks/${deck.id}`} style={{textDecoration: "none"}}>
+            <button className="btn btn-secondary" type="button" >
+              View
+            </button>{" "}
+          </Link>
+          <Link to={`/decks/${deck.id}/study`}>
+            <button className="btn btn-primary" type="button">
+              Study
+            </button>{" "}
+          </Link>
+          <button className="btn btn-danger float-right" onClick={handleDelete}>
+            Delete
+          </button>{" "}
+        </div>
       </div>
     </Fragment>
   );

@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function NotEnoughCards({ deck, cards }) {
-  console.log(cards);
   return (
     <section>
       <div></div>
@@ -16,9 +13,9 @@ function NotEnoughCards({ deck, cards }) {
       </p>
       <div>
         <Link to={`/decks/${deck.id}/cards/new`}>
-          <Button variant="primary" type="button">
+          <button className="btn btn-primary" type="button">
             Add Cards
-          </Button>
+          </button>
         </Link>
       </div>
     </section>

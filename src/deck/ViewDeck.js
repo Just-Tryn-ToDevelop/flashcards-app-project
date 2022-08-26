@@ -1,7 +1,4 @@
 import React, { Fragment } from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link, useHistory, Switch, Route } from "react-router-dom";
 import { deleteDeck } from "../utils/api";
 import CardsList from "./CardsList";
@@ -19,45 +16,53 @@ function ViewDeck({ deck }) {
       history.push("/");
     }
   };
-  console.log(deck);
   if (!deck) return null;
   return (
     <Fragment>
       <section>
-        <div>
-          <Breadcrumb className="bg-light border d-flex justify-content-center pt-2 ">
-            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-            <Breadcrumb.Item active>{deck.name}</Breadcrumb.Item>
-          </Breadcrumb>
-        </div>
-        <Card style={{ width: "100%" }}>
-          <Card.Body>
-            <Card.Title>{deck.name}</Card.Title>
-            <Card.Text>{deck.description}</Card.Text>
-            <Link to={`/decks/${deck.id}/edit`}>
-              <Button variant="secondary" type="button">
-                Edit
-              </Button>{" "}
-            </Link>
-            <Link to={`/decks/${deck.id}/study`}>
-              <Button variant="primary" type="button">
-                Study
-              </Button>{" "}
-            </Link>
-            <Link to={`/decks/${deck.id}/cards/new`}>
-              <Button variant="primary" type="button">
-                Add Cards
-              </Button>{" "}
-            </Link>
-            <Button
-              variant="danger"
-              className="float-right"
-              onClick={handleDelete}
+      <div>
+            <nav
+              ariaLabel="breadcrumb"
+              className="bg-light border d-flex justify-content-center pt-2"
             >
-              Delete
-            </Button>{" "}
-          </Card.Body>
-        </Card>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  {" "}
+                  <a href="/" style={{ textDecoration: "none" }}>
+                    Home
+                  </a>
+                </li>
+                <li className="breadcrumb-item active">{deck.name}</li>
+              </ol>
+            </nav>
+          </div>
+        <div className="card" style={{ width: "100%" }}>
+        <div className="card-body">
+          <h5 className="card-title">{deck.name}</h5>
+          <div className="mb-2 text-muted" style={{ textAlign: "right" }}>
+            {deck.cards.length} cards
+          </div>
+          <p className="card-text">{deck.description}</p>
+          <Link to={`/decks/${deck.id}/edit`} style={{textDecoration: "none"}}>
+            <button className="btn btn-secondary" type="button" >
+              Edit
+            </button>{" "}
+          </Link>
+          <Link to={`/decks/${deck.id}/study`} style={{textDecoration: "none"}}>
+            <button className="btn btn-primary" type="button">
+              Study
+            </button>{" "}
+          </Link>
+          <Link to={`/decks/${deck.id}/cards/new`}>
+            <button className="btn btn-primary" type="button">
+              Add Cards
+            </button>{" "}
+          </Link>
+          <button className="btn btn-danger float-right" onClick={handleDelete}>
+            Delete
+          </button>{" "}
+        </div>
+      </div>
       </section>
       <section>
         <div>

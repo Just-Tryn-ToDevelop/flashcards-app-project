@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Deck from "./Deck";
 import { listDecks } from "../utils/api";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 function DeckList() {
@@ -21,13 +20,13 @@ function DeckList() {
     <main>
       <div>
         <Link to="/decks/new">
-          <Button
-            variant="secondary"
+          <button
+            className="btn btn-secondary"
             type="button"
             style={{ marginBottom: "15px" }}
           >
             Create Deck
-          </Button>
+          </button>
         </Link>
       </div>
       <section>{list}</section>

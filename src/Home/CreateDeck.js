@@ -1,7 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
+import React, { useState, Fragment } from "react";
 import { createDeck } from "../utils/api";
 import { Link } from "react-router-dom";
 
@@ -26,45 +23,62 @@ function CreateDeck() {
 
   return (
     <Fragment>
-      <div>
-        <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item active>Create Deck</Breadcrumb.Item>
-        </Breadcrumb>
-      </div>
-      <div>
-        <h1>Create Deck</h1>
-      </div>
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            as="input"
-            placeholder="Deck Name"
-            name="name"
-            value={formData.name}
-            onChange={changeHandler}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            as="textarea"
-            placeholder="Brief description of the deck"
-            name="description"
-            value={formData.description}
-            onChange={changeHandler}
-          />
-        </Form.Group>
-        <Link to="/">
-          <Button variant="secondary" type="button">
-            Cancel
-          </Button>{" "}
-        </Link>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+      <main style={{ margin: "30px" }}>
+        <div>
+          <div>
+            <nav
+              ariaLabel="breadcrumb"
+              className="bg-light border d-flex justify-content-center pt-2"
+            >
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  {" "}
+                  <a href="/" style={{ textDecoration: "none" }}>
+                    Home
+                  </a>
+                </li>
+                <li className="breadcrumb-item active">Create Deck</li>
+              </ol>
+            </nav>
+          </div>
+          <form onSubmit={submitHandler}>
+            <div>
+              <h1>Create Deck</h1>
+            </div>
+            <div className="mb-3" controlId="formBasicEmail">
+              <label className="form-label">Name</label>
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                placeholder="Deck Name"
+                value={formData.name}
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="mb-3" controlId="formBasicPassword">
+              <label className="form-label">Description</label>
+              <textarea
+                className="form-control"
+                name="description"
+                placeholder="Brief description of the deck"
+                value={formData.description}
+                onChange={changeHandler}
+              />
+            </div>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <button className="btn btn-secondary" type="button">
+                Cancel
+              </button>{" "}
+            </Link>
+            <Link>
+              <button className="btn btn-primary" type="submit">
+                Submit
+              </button>
+            </Link>
+          </form>
+        </div>
+      </main>
     </Fragment>
   );
 }

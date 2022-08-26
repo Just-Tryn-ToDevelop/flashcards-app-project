@@ -1,9 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React, { Fragment } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { deleteCard } from "../utils/api";
 
@@ -22,31 +17,31 @@ function ListCard({ card, deck }) {
 
   return (
     <Fragment>
-      <Card style={{ width: "100%" }}>
-        <Card.Body>
-          <Container>
-            <Row>
-              <Col>
-                <Card.Text>{card.front}</Card.Text>
-              </Col>
-              <Col>
-                <Card.Text>{card.back}</Card.Text>
-              </Col>
-            </Row>
-          </Container>
-          <div className="float-right">
-            <Link to={`/decks/${deck.id}/cards/${card.id}/edit`}>
-              {" "}
-              <Button variant="secondary" type="button">
-                Edit
-              </Button>{" "}
-            </Link>
-            <Button variant="danger" type="button" onClick={handleDelete}>
-              Delete
-            </Button>
+      <div className="card" style={{ width: "100%" }}>
+        <div className="card-body">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <div className="card-text">{card.front}</div>
+              </div >
+              <div className="col">
+                <div className="card-text">{card.back}</div>
+              </div>
+            </div >
           </div>
-        </Card.Body>
-      </Card>
+          <div className="float-right">
+            <Link to={`/decks/${deck.id}/cards/${card.id}/edit`} style={{textDecoration: "none"}}>
+              {" "}
+              <div className="btn btn-secondary" type="button">
+                Edit
+              </div>{" "}
+            </Link>
+            <div className="btn btn-danger" type="button" onClick={handleDelete}>
+              Delete
+            </div>
+          </div>
+        </div>
+      </div>
     </Fragment>
   );
 }

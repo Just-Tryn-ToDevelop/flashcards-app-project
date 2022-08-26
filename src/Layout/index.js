@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "../Home/DeckList";
-import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import CreateDeck from "../Home/CreateDeck";
 import ViewDeck from "../deck/ViewDeck";
 import StudyDeck from "../deck/StudyDeck";
