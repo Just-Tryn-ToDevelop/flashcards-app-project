@@ -71,11 +71,9 @@ function CreateDeck() {
                 Cancel
               </button>{" "}
             </Link>
-            <Link>
               <button className="btn btn-primary" type="submit">
                 Submit
               </button>
-            </Link>
           </form>
         </div>
       </main>

@@ -49,11 +49,12 @@ function AddCards({ deck }) {
               </ol>
             </nav>
           </div>
+          
           <form onSubmit={submitHandler}>
             <div>
               <h2>{deck.name}: Add Card</h2>
-            </div>
-            <div className="mb-3" controlId="formBasicEmail">
+            </div >
+            <div className=" form-group mb-3" >
               <label className="form-label">Front</label>
               <textarea
                 className="form-control"
@@ -63,7 +64,7 @@ function AddCards({ deck }) {
                 onChange={changeHandler}
               />
             </div>
-            <div className="mb-3" controlId="formBasicPassword">
+            <div className="form-group mb-3" >
               <label className="form-label">Back</label>
               <textarea
                 className="form-control"
@@ -78,12 +79,11 @@ function AddCards({ deck }) {
                 Done
               </button>{" "}
             </Link>
-            <Link>
               <button className="btn btn-primary" type="submit">
                 Save
               </button>
-            </Link>
           </form>
+
         </div>
       </main>
     </Fragment>

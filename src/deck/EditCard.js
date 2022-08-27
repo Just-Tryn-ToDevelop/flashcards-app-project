@@ -70,6 +70,7 @@ function EditCard({ deck }) {
               </ol>
             </nav>
           </div>
+
           <form onSubmit={submitHandler}>
             <div>
               <h1>Edit Card</h1>
@@ -97,12 +98,11 @@ function EditCard({ deck }) {
                 Cancel
               </button>{" "}
             </Link>
-            <Link>
               <button className="btn btn-primary" type="submit">
                 Submit
               </button>
-            </Link>
           </form>
+          
         </div>
       </main>
     </Fragment>
