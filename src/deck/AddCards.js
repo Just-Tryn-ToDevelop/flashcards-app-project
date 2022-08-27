@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { createCard } from "../utils/api";
-import { Link } from "react-router-dom";
+import Form from "./Form";
 
 function AddCards({ deck }) {
   const initialState = {
@@ -49,41 +49,12 @@ function AddCards({ deck }) {
               </ol>
             </nav>
           </div>
-          
-          <form onSubmit={submitHandler}>
-            <div>
-              <h2>{deck.name}: Add Card</h2>
-            </div >
-            <div className=" form-group mb-3" >
-              <label className="form-label">Front</label>
-              <textarea
-                className="form-control"
-                name="front"
-                placeHolder="Front side of card"
-                value={formData.front}
-                onChange={changeHandler}
-              />
-            </div>
-            <div className="form-group mb-3" >
-              <label className="form-label">Back</label>
-              <textarea
-                className="form-control"
-                name="back"
-                placeHolder="Back side of card"
-                value={formData.back}
-                onChange={changeHandler}
-              />
-            </div>
-            <Link to={`/decks/${deck.id}`} style={{ textDecoration: "none" }}>
-              <button className="btn btn-secondary" type="button">
-                Done
-              </button>{" "}
-            </Link>
-              <button className="btn btn-primary" type="submit">
-                Save
-              </button>
-          </form>
-
+          <Form
+            addChangeHandler={changeHandler}
+            addSubmitHandler={submitHandler}
+            formData={formData}
+            deck={deck}
+          />
         </div>
       </main>
     </Fragment>

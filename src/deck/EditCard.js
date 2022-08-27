@@ -1,7 +1,8 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { readCard } from "../utils/api";
 import { updateCard } from "../utils/api";
+import Form from "./Form";
 
 function EditCard({ deck }) {
   const initialState = {
@@ -70,39 +71,12 @@ function EditCard({ deck }) {
               </ol>
             </nav>
           </div>
-
-          <form onSubmit={submitHandler}>
-            <div>
-              <h1>Edit Card</h1>
-            </div>
-            <div className="mb-3" controlId="formBasicEmail">
-              <label className="form-label">Front</label>
-              <textarea
-                className="form-control"
-                name="front"
-                value={formData.front}
-                onChange={changeHandler}
-              />
-            </div>
-            <div className="mb-3" controlId="formBasicPassword">
-              <label className="form-label">Back</label>
-              <textarea
-                className="form-control"
-                name="back"
-                value={formData.back}
-                onChange={changeHandler}
-              />
-            </div>
-            <Link to={`/decks/${deck.id}`} style={{ textDecoration: "none" }}>
-              <button className="btn btn-secondary" type="button">
-                Cancel
-              </button>{" "}
-            </Link>
-              <button className="btn btn-primary" type="submit">
-                Submit
-              </button>
-          </form>
-          
+          <Form
+            editChangeHandler={changeHandler}
+            editSubmitHandler={submitHandler}
+            formData={formData}
+            deck={deck}
+          />
         </div>
       </main>
     </Fragment>
